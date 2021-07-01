@@ -19,7 +19,7 @@ export const dataReducer = createReducer(
   initialState,
 
   on(dataActionTypes.dataFetched, (state, { data }) => ({ ...state, data })),
-  on(dataActionTypes.addEmptyItem, (state) => ({ ...state, data: [...state.data, {}] }))
+  on(dataActionTypes.addEmptyItem, (state) => ({ ...state, data: [...state.data, {}] })),
 );
 export const { selectAll } = adapter.getSelectors();
 

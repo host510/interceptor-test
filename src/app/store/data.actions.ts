@@ -11,10 +11,15 @@ export const dataFetched = createAction(
 export const addEmptyItem = createAction(
   '[Component Page] Add Item'
 );
+export const addData = createAction(
+  '[Component Page] Add Data',
+  props<{ data: any }>()
+);
 
 
 export const dataActionTypes = {
   fetchData,
   dataFetched,
-  addEmptyItem
+  addEmptyItem,
+  addData
 };
