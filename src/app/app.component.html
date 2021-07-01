@@ -1,0 +1,34 @@
+<div class="data-table">
+  <nz-table #table [nzData]="['']" [nzShowPagination]="false" [nzBordered]="true">
+    <thead>
+      <tr>
+        <ng-container *ngFor="let header of headers">
+          <th *ngIf="header !== 'id' && header !== 'hidden'">{{header}}</th>
+        </ng-container>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let value of values; let i = index">
+        <tr>
+          <ng-container *ngFor="let header of headers">
+            <td *ngIf="header !== 'id' && header !== 'hidden'">
+              <input nz-input [(ngModel)]="value[header]" [disabled]="header.indexOf('Id') > -1 ? true : null" />
+            </td>
+          </ng-container>
+          <td>
+            <span title="Кликните, чтобы сохранить изменения в ряду">
+              <i nz-icon nzType="edit" nzTheme="outline"></i>
+            </span>
+            <nz-divider nzType="vertical"></nz-divider>
+            <span title="Кликните, чтобы удалить ряд">
+              <i class="delete" nz-icon nzType="delete" nzTheme="outline" (click)="deleteRow($event)"></i>
+            </span>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </nz-table>
+  <button nz-button nzType="primary" (click)="addRow()">Добавить ряд</button>
+  <br><br>
+</div>
